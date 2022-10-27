@@ -1,0 +1,20 @@
+Truncate table
+TRUNCATE TABLE action_history RESTART IDENTITY CASCADE;
+ALTER SEQUENCE action_history_id_seq RESTART WITH 1;
+
+yt-dlp -f 'bv[height=360][ext=mp4]+ba[ext=m4a]' --merge-output-format mp4 https://www.youtube.com/watch?v=i5FtET6x9Fs&list=RDeSdjGImvZhQ&index=3
+yt-dlp -f 'bv[height=480][ext=mp4]+ba[ext=m4a]' --merge-output-format mp4 https://www.youtube.com/watch?v=i5FtET6x9Fs&list=RDeSdjGImvZhQ&index=3
+yt-dlp -f 'bv[height=720][ext=mp4]+ba[ext=m4a]' --merge-output-format mp4 https://www.youtube.com/watch?v=i5FtET6x9Fs&list=RDeSdjGImvZhQ&index=3
+yt-dlp -f 'bv[height=240][ext=mp4]+ba[ext=m4a]' --merge-output-format mp4 https://www.youtube.com/watch?v=i5FtET6x9Fs&list=RDeSdjGImvZhQ&index=3
+
+Split file
+split -b 10m Mr\ SAYDA\ -\ Ampianaro\ Aho\ \(Official\ Video\ 2022\ \)\ \[KRwYJz9YNQ8\].mp4  "Mr sayda.mp4." -d //-d for numeric
+// Name is important for join
+
+ yt-dlp -f 'bv[height<=480]+ba[ext=m4a]' --merge-output-format mp4 https://www.youtube.com/watch?v=2Y2vuuFderY
+
+// zip a video
+zip video.zip video_link
+
+//Split video
+ zip -s 10m video.zip --out Ngoma // pas besoin de zip sur le nom de sortie

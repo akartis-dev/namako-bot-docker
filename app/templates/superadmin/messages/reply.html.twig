@@ -1,0 +1,6 @@
+{% extends 'superadmin/superadmin_base.html.twig' %}
+{% block content_title %} Reply message {{ message.sender.name }}{% endblock %}
+
+{% block body_content %}
+	<div reply-message data-facebook-id="{{ message.sender.facebookId }}"></div>
+{% endblock %}

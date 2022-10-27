@@ -1,0 +1,25 @@
+framework:
+    messenger:
+        failure_transport: failed
+
+        transports:
+            # https://symfony.com/doc/current/messenger.html#transport-configuration
+            async:
+                dsn: '%env(MESSENGER_TRANSPORT_DSN)%'
+                options:
+                    use_notify: true
+                    check_delayed_interval: 60000
+                retry_strategy:
+                    max_retries: 0
+                    multiplier: 1
+            failed: 'doctrine://default?queue_name=failed'
+            # sync: 'sync://'
+
+        routing:
+            App\Messenger\SearchVideo\SearchVideo: async
+            App\Messenger\UploadVideo\ProcessUpload: async
+            App\Messenger\SendMessages\SendMessages: async
+            App\Messenger\SendMessages\CustomerMessage: async
+            App\Messenger\SearchVideo\SearchVideoMp4: async
+            App\Messenger\UploadFile\UploadFile: async
+            App\Messenger\HelpDownloadSplit\HelpDownloadSplit: async
